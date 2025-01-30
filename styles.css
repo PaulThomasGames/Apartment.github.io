@@ -1,0 +1,564 @@
+:root {
+    --primary: #000000;
+    --secondary: #F4442E;
+    --accent: #F2F3AE;
+}
+
+body {
+    background: var(--primary);
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+	-webkit-user-drag: none;
+	user-drag: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+    user-select: none;
+}
+
+div#box_entr {
+    display: flex;
+    position: absolute;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: .2rem;
+    transition: opacity 1s ease-out;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+h1#welcome {
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 800;
+    font-size: 4.25rem;
+    line-height: 4.75rem;
+    color: var(--secondary);
+
+    margin: 0;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 2s ease;
+    transition-delay: 0ms;
+}
+
+p {
+    margin: 0;
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 3.5rem;
+    color: var(--secondary);
+}
+
+p#small_para {
+    font-size: 1.5rem;
+    padding: .5rem;
+    width: 60rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--primary);
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    background: var(--secondary);
+    opacity: 0;
+    transition: opacity 2s ease;
+    transition-delay: 1250ms;
+}
+
+div#box_para {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s ease;
+    transition-delay: 1000ms;
+}
+
+button {
+    margin: 0;
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: var(--secondary);
+
+    width: 36rem;
+    height: 6rem;
+
+    background: none;
+    border: 1px solid var(--secondary);
+    outline: none;
+    border-radius: .2rem;
+
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 2s ease;
+    transition-delay: 4000ms;
+}
+
+button.vis,div#box_para.vis,p#small_para.vis,h1#welcome.vis {
+    opacity: 1;
+}
+
+/* SIDE BAR AND BRANDING */
+
+div#brand {
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: right;
+    margin: 0;
+
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: var(--accent);
+
+    user-select: none;
+    z-index: 99;
+}
+
+div#sidebar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    position: absolute;
+    width: 2rem;
+    height: 10rem;
+    margin: 2rem;
+    padding: 0;
+
+    transition: opacity 1000ms ease-out;
+}
+
+span.dot {
+    height: 8px;
+    width: 8px;
+    background-color: rgb(255,255,255,0.2);
+    border-radius: 50%;
+    display: inline-block;
+    transition: all 300ms ease-out;
+}
+
+span.dot.current {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(255,255,255,0.5);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* TASK ONE */
+
+
+div#box_lightbulb {
+    display: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0rem;
+    left: 50%;
+    translate: (-50%, -50%);
+    animation: swing_light 10s infinite;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes swing_light {
+    0% {transform: rotate(-2deg);}
+    50% {transform: rotate(2deg);}
+    100% {transform: rotate(-2deg);}
+}
+
+div#box_task1 {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+img#lightbulb {
+    position: absolute;
+    width: 25rem;
+    left: 50%;
+    top: 16.5rem;
+    transform: translate(-50%, -50%);
+    opacity: 0.0;
+    transition: opacity 500ms ease-out;
+}
+
+img#lightbulb.vis {
+    opacity: 1;
+}
+
+svg#lightbulb_wire {
+    position: absolute;
+    top: 6rem;
+    width: 4px;
+    height: 13rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #000;
+    z-index: 2;
+    transition: fill 500ms ease-out;
+}
+
+svg#lightbulb_wire.vis {
+    fill: url(#grad1);
+}
+
+svg#lightbulb_glow {
+    position: absolute;
+    top: 17rem;
+    width: 10rem;
+    height: 10rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    fill: #000;
+    z-index: 1;
+    transition: fill 500ms ease-out;
+    animation: lightbulb_waver 4s infinite;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+
+svg#lightbulb_glow.vis {
+    fill: url(#grad2);
+}
+
+@keyframes lightbulb_waver {
+    0% {opacity: 1.0;}
+    20% {opacity: 0.6;}
+    23% {opacity: 0.8;}
+    38% {opacity: 0.4;}
+    46% {opacity: 0.7;}
+    59% {opacity: 0.8;}
+    72% {opacity: 0.5;}
+    80% {opacity: 0.6;}
+    82% {opacity: 0.3;}
+    88% {opacity: 0.8;}
+    100% {opacity: 1.0;}
+}
+
+img#stone_keyboard {
+    display: none;
+    position: absolute;
+    width: 40rem;
+    left: 50%;
+    top: 80vh;
+    transform: translate(-50%, -50%);
+    opacity: 0.0;
+    transition: opacity 500ms ease-out;
+}
+
+img#stone_keyboard.vis {
+    opacity: 0.4;
+}
+
+/* TASK TWO */
+
+p#task2_words,p#task2_rqst {
+    font-family: "Patrick Hand", serif;
+    font-size: 2.25rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    user-select: none;
+}
+
+p#task2_rqst {
+    margin-bottom: 1.5rem;
+}
+
+p#task2_words.vis, p#task2_rqst.vis {
+    opacity: 1;
+}
+
+p#task2_words > b {
+    color: var(--secondary);
+}
+
+button#task2_button, button#task2_button2 {
+    margin: 0;
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--accent);
+
+    margin-top: 0.5rem;
+    width: 28rem;
+    height: 5rem;
+
+    background: none;
+    border: 1px solid var(--accent);
+    outline: none;
+    border-radius: .2rem;
+
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
+button#task2_button.vis, button#task2_button2.vis {
+    opacity: 1;
+}
+
+div#box_task2 {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 80rem;
+    height: 40rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+
+/* TASK THREE */
+
+div#box_task3 {
+    display: none;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+
+p#task3_words {
+    position: absolute;
+
+    font-family: "Funnel Sans", serif;
+    font-size: 7.50rem;
+    font-weight: 800;
+    color: var(--secondary);
+    opacity: 0;
+    transition: opacity 2s ease-out;
+
+    width: 100%;
+    text-align: center;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    user-select: none;
+}
+
+p#task3_words.vis {
+    opacity: 1;
+}
+
+@keyframes eye_contrast {
+    0% {filter: blur(0px) brightness(100%) contrast(1.0); width: 60rem;}
+    20% {filter: blur(4px) brightness(125%) contrast(1.22); width: 53rem;}
+    32% {filter: blur(1px) brightness(100%) contrast(1.1); width: 58rem;}
+    60% {filter: blur(3px) brightness(125%) contrast(1.15); width: 53rem;}
+    70% {filter: blur(2px) brightness(110%) contrast(1.05); width: 56rem;}
+    88% {filter: blur(4px) brightness(120%) contrast(1.18); width: 52rem;}
+    100% {filter: blur(0px) brightness(100%) contrast(1.0); width: 60rem;}
+}
+
+img#task3_eye {
+    position: absolute;
+
+    width: 60rem;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+
+    animation: eye_contrast 18s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+img#task3_eye.vis {
+    opacity: .25;
+}
+
+/* TASK FOUR */
+
+div#box_task4 {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 80rem;
+    height: 40rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+
+div#box_clock {
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 20rem;
+    height: 5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.clock_item {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
+.clock_item.vis {
+    opacity: 1;
+}
+
+p#task4_words {
+    font-family: "Patrick Hand", serif;
+    font-size: 2.25rem;
+    color: var(--secondary);
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    user-select: none;
+    margin-bottom: 2rem;
+}
+
+p#task4_words.vis {
+    opacity: 1;
+}
+
+input.clock_item {
+    padding: 0;
+    margin: 0;
+    width: 5rem;
+    height: 3rem;
+    font-family: "Funnel Sans", serif;
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: var(--secondary);
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    user-select: none;
+    background: none;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid var(--secondary);
+}
+
+p.clock_item {
+    padding: 0;
+    margin: 0;
+    height: 3rem;
+    font-family: "Funnel Sans", serif;
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: var(--secondary);
+}
+
+input.clock_item::placeholder {
+    opacity: 0.0;
+    transition: opacity 2s ease-out;
+    color: var(--secondary);
+    text-align: center;
+}
+
+input.clock_item.vis::placeholder {
+    opacity: 0.5;
+    color: var(--secondary);
+    text-align: center;
+}
+
+/* TASK FIVE */
+
+div#box_task5 {
+    display: none;
+    position: absolute;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 80rem;
+    height: 50rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes candle_waver {
+    0% {transform: skewX(0deg)}
+    20% {transform: skewX(-3.75deg)}
+    60% {transform: skewX(2.50deg)}
+    100% {transform: skewX(0deg)}
+}
+
+img.candle {
+    width: 12rem;
+    padding: 0;
+    margin: 0;
+
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+
+    animation: candle_waver 16s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+img.candle:hover {
+    cursor: pointer;
+}
+
+img.candle#can1{animation-delay: 1s;}
+img.candle#can2{animation-delay: 3s;}
+img.candle#can3{animation-delay: 4s;}
+img.candle#can4{animation-delay: 5s;}
+img.candle#can5{animation-delay: 6s;}
+
+img.candle.vis {
+    opacity: 1;
+}

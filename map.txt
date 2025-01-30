@@ -1,0 +1,6 @@
+1. Morse code with light bulb, five random letters
+2. "Please remember me: CHLOE"; continue
+3. Interactive clock, setting clock to current time
+4. "Look away" with eye, minimize tab
+5. Five candles, in order of the name
+6. Disappearing maze with mouse cursor, timed

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The New Apt.</title>
+        <link href="styles.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300..800&family=Patrick+Hand&display=swap" rel="stylesheet">
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <audio loop="true" src="assets/ambience.wav"></audio>
+
+        <!-- ENTRANCE -->
+        <div id="box_entr">
+            <h1 id="welcome">WELCOME.</h1>
+            <div id="box_para">
+                <p>In this very website, you will attempt five puzzles, all varying in difficulty.</p>
+                <p>Remember to think abstractly; none of the puzzles will be obvious in nature.</p>
+                <p>If you're one of the few who pass all the trials, you'll receive a free Steam game.</p>
+            </div>
+            <p id="small_para">Throughout this experience, you may need to type, click, or use external resources.</p>
+            <button id="btn_entr">ENTER</button>
+        </div>
+
+        <!-- SIDE BAR -->
+        <div id="sidebar" class="transparent">
+            <span class="dot current" id="dot1"></span>
+            <span class="dot" id="dot2"></span>
+            <span class="dot" id="dot3"></span>
+            <span class="dot" id="dot4"></span>
+            <span class="dot" id="dot5"></span>
+        </div>
+
+        <!-- BRANDING -->
+        <div id="brand">THE NEW APT.</div>
+
+        <!-- FIRST TASK -->
+        <div id="box_task1" style="display: none;">
+            <div id="box_lightbulb">
+                <img id="lightbulb" src="assets/lightbulb.jpg">
+                <svg id="lightbulb_wire">
+                    <defs>
+                    <linearGradient id="grad1" gradientTransform="rotate(90)">
+                        <stop offset="5%" stop-color="#000000" />
+                        <stop offset="95%" stop-color="#302518" />
+                    </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="4px" height="15rem"/>
+                </svg>
+                <svg id="lightbulb_glow">
+                    <defs>
+                    <radialGradient id="grad2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" stop-color="rgba(255, 184, 66, .2)" />
+                        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+                    </radialGradient>
+                    </defs>
+                    <circle cx="5rem" cy="5rem" r="5rem"/>
+                </svg>
+            </div>
+            <img id="stone_keyboard" src="assets/stonekeyboard.png">
+        </div>
+
+        <!-- SECOND TASK -->
+        <div id="box_task2" style="display: none;">
+            <p id="task2_words">My name is <b>CHLOE</b>.</p>
+            <p id="task2_rqst">Will you remember me?</p>
+            <button id="task2_button" disabled>I WILL</button>
+            <button id="task2_button2" disabled>I WILL NOT</button>
+        </div>
+
+        <!-- THIRD TASK -->
+        <div id="box_task3" style="display: none;">
+            <p id="task3_words">LOOK AWAY</p>
+            <img id="task3_eye" src="assets/eye.png">
+        </div>
+
+        <!-- FOURTH TASK -->
+        <div id="box_task4" style="display: none;">
+            <p id="task4_words"></p>
+            <div id="box_clock">
+                <input id="inhr" class="clock_item" type="text" maxlength="2" placeholder="??">
+                <p class="clock_item">:</p>
+                <input id="inmn" class="clock_item" type="text" maxlength="2" placeholder="??">
+            </div>
+        </div>
+
+        <!-- FIFTH TASK -->
+        <div id="box_task5" style="display: none;">
+            <a onclick="activateCandle(3)"><img class="candle" id="can3" src="assets/candles/candle_part3.png"></a>
+            <a onclick="activateCandle(5)"><img class="candle" id="can5" src="assets/candles/candle_part5.png"></a>
+            <a onclick="activateCandle(2)"><img class="candle" id="can2" src="assets/candles/candle_part2.png"></a>
+            <a onclick="activateCandle(1)"><img class="candle" id="can1" src="assets/candles/candle_part1.png"></a>
+            <a onclick="activateCandle(4)"><img class="candle" id="can4" src="assets/candles/candle_part4.png"></a>
+        </div>
+
+    </body>
+</html>
