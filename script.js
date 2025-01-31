@@ -115,7 +115,7 @@ function flickerLight(morseString, index) {
 
     $("#box_lightbulb").css('visibility', 'visible'); // show lightbulb
     var audio = new Audio(`assets/buzz/${(morseString[index]=='-') ? "l" : "s"}${Math.floor(Math.random()*3+1)}.wav`);
-    audio.volume = 0.15;
+    audio.volume = 0.30;
     if(!firstPuzzleBeat){audio.play();} // play buzzing sound
     setTimeout(()=>{if(!firstPuzzleBeat){$("#box_lightbulb").css('visibility', 'hidden')}},blinkTime); // hide lightbulb for established blinkTime
     setTimeout(()=>{if(!firstPuzzleBeat){flickerLight(morseString, nextIndex)}},nextTime); // go to next blink after nextTime
