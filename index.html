@@ -15,13 +15,15 @@
     <body>
         <audio loop="true" src="assets/ambience.mp3"></audio>
 
+        <canvas width="800" height="600" id="ss_canvas"></canvas>
+
         <!-- ENTRANCE -->
         <div id="box_entr">
             <h1 id="welcome">WELCOME.</h1>
             <div id="box_para">
                 <p>In this very website, you will attempt five puzzles, all varying in difficulty.</p>
                 <p>Remember to think abstractly; none of the puzzles will be obvious in nature.</p>
-                <p>If you're one of the few who pass all the trials, you'll receive a free Steam game.</p>
+                <p>If you're one of the few who pass all the trials, you'll receive <a onclick="linkToGame()">a free Steam game</a>.</p>
             </div>
             <p id="small_para">Throughout this experience, you may need to type, click, or use external resources.</p>
             <button id="btn_entr">ENTER</button>
@@ -98,5 +100,19 @@
             <a onclick="activateCandle(4)"><img class="candle" id="can4" src="assets/candles/candle_part4.png"></a>
         </div>
 
+        <!-- CLOSING -->
+        <div id="box_cls" style="display: none;">
+            <h1 id="congrats">CONGRATULATIONS.</h1>
+            <div id="cls_para">
+                <p>You have completed all the puzzles successfully!</p>
+                <p>From here, type your handle below:</p>
+            </div>
+            <input id="cls_input" placeholder="Your handle">
+            <p id="cls_det">Send a screenshot to @PaulThomasGames on Discord to receive the game.</p>
+            <button id="btn_cls">COPY SCREENSHOT</button>
+        </div>
+
     </body>
 </html>
+
+<!--A LINK TO GAME, REMOVE SELECT ON BUTTONS-->

@@ -60,7 +60,7 @@ h1#welcome {
     margin: 0;
     margin-bottom: 2rem;
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 2s ease-out;
     transition-delay: 0ms;
 }
 
@@ -73,10 +73,22 @@ p {
     color: var(--secondary);
 }
 
+a {
+    margin: 0;
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    line-height: 3.5rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 p#small_para {
     font-size: 1.5rem;
     padding: .5rem;
-    width: 60rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: fit-content;
     font-weight: 800;
     text-align: center;
     color: var(--primary);
@@ -84,7 +96,7 @@ p#small_para {
     margin-bottom: 4rem;
     background: var(--secondary);
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 2s ease-out;
     transition-delay: 1250ms;
 }
 
@@ -93,7 +105,7 @@ div#box_para {
     margin: 0;
     text-align: center;
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 2s ease-out;
     transition-delay: 1000ms;
 }
 
@@ -112,9 +124,11 @@ button {
     outline: none;
     border-radius: .2rem;
 
+    user-select: none;
+
     cursor: pointer;
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 2s ease-out;
     transition-delay: 4000ms;
 }
 
@@ -561,4 +575,128 @@ img.candle#can5{animation-delay: 6s;}
 
 img.candle.vis {
     opacity: 1;
+}
+
+/* CLOSING */
+
+div#box_cls {
+    display: flex;
+    position: absolute;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: .2rem;
+    transition: opacity 1s ease-out;
+}
+
+.transparent {
+    opacity: 0;
+}
+
+h1#congrats {
+    font-family: "Funnel Sans", sans-serif;
+    font-weight: 800;
+    font-size: 4.25rem;
+    line-height: 4.75rem;
+    color: var(--secondary);
+
+    margin: 0;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    transition-delay: 0ms;
+}
+
+div#cls_para {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    transition-delay: 1000ms;
+}
+
+p#cls_det {
+    font-size: 1.5rem;
+    padding: .5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: fit-content;
+    font-weight: 800;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 4rem;
+    background: var(--secondary);
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    transition-delay: 1000ms;
+}
+
+input#cls_input {
+    padding: 0;
+    margin: 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 28rem;
+    height: 3rem;
+    font-family: "Funnel Sans", serif;
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: var(--secondary);
+    opacity: 0;
+    border-bottom: 1px solid var(--primary);
+    transition: opacity 2s ease-out;
+    transition: border-bottom 2s ease-out;
+    transition-delay: 1000ms;
+    user-select: none;
+    background: none;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+
+input#cls_input::placeholder {
+    opacity: 0.0;
+    transition: opacity 2s ease-out;
+    transition-delay: 1000ms;
+    color: var(--secondary);
+    text-align: center;
+}
+
+input#cls_input.vis::placeholder {
+    opacity: 0.5;
+    color: var(--secondary);
+    text-align: center;
+}
+
+input#cls_input.vis {
+    border-bottom: 1px solid var(--secondary);
+}
+
+button#btn_cls {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+    transition-delay: 2000ms;
+}
+
+p#cls_det.vis,div#cls_para.vis,h1#congrats.vis,input#cls_input,button#btn_cls.vis {
+    opacity: 1;
+}
+
+/* SCREENSHOTS */
+
+canvas {
+    visibility: none;
+    display: none;
 }

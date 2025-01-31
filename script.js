@@ -28,6 +28,7 @@ var puzzleStage = 0;
 // entrance page
 var firstPuzzleInteract = false;
 $(document).ready(function() {
+
     $("#welcome").addClass("vis");
     $("#box_para").addClass("vis");
     $("#small_para").addClass("vis");
@@ -39,16 +40,19 @@ $(document).ready(function() {
         setTimeout(()=>{$("#box_entr").css('display','none')},1000);
         setTimeout(()=>{$("#sidebar").removeClass("transparent")},1000);
 
-        const audio = document.querySelector("audio");
-        audio.volume = 0.06;
-        audio.play();
+        const bgm = document.querySelector("audio");
+        bgm.volume = 0.06;
+        bgm.play();
 
         setTimeout(()=>{puzzleStage = 1;routePuzzle(puzzleStage);},3000);
-    }); 
+    });
+    $("#btn_cls").click(function(){copyClipboard()});
 });
 
 
-
+function linkToGame() {
+    window.open("https://store.steampowered.com/app/3404410/The_New_Apartment/");
+}
 
 
 // first puzzle
@@ -179,10 +183,18 @@ function routePuzzle(puzzleStage) {
 
     if(puzzleStage >= 1){
         $(`#dot${puzzleStage-1}`).removeClass("current");
-        if(puzzleStage < 6){$(`#dot${puzzleStage}`).addClass("current");}
+        if(puzzleStage < 6){$(`#dot${puzzleStage}`).addClass("current");}else{$("#sidebar").addClass("transparent");}
     }
 
-    var allPuzzles = [clockPuzzle, flickerPuzzle, namePuzzle, lookPuzzle, candlePuzzle];
+    if(puzzleStage >= 2){
+        var audio = new Audio('assets/next.wav');
+        audio.volume = 0.5;
+        audio.mozPreservesPitch = false;
+        audio.playbackRate = 0.7;
+        audio.play();
+    }
+
+    var allPuzzles = [clockPuzzle, flickerPuzzle, namePuzzle, lookPuzzle, candlePuzzle, endScreen];
     allPuzzles[puzzleStage-1]();
 }
 
@@ -379,7 +391,14 @@ function candlePuzzle() {
     setTimeout(()=>{
         $("#box_task5").css('visibility','visible');
         $('.candle').each(function(i, obj) {
-            setTimeout(()=>{$(this).addClass('vis');},i*500);
+            setTimeout(()=>{
+                $(this).addClass('vis');
+                var audio = new Audio('assets/lighter.wav');
+                audio.volume = Math.random()/3+0.4;
+                audio.mozPreservesPitch = false;
+                audio.playbackRate = Math.random()/3+0.8;
+                audio.play();
+            },i*500);
         });
     },1500);
 }
@@ -400,16 +419,38 @@ function activateCandle(n) {
 
     candleClickOrder.push(n);
     $(`#can${n}`).removeClass('vis');
+    
+    var audio = new Audio('assets/candle.wav');
+    audio.volume = Math.random()/3+0.5;
+    audio.mozPreservesPitch = false;
+    audio.playbackRate = Math.random()/2+0.7;
+    audio.play();
 
     if(candleClickOrder.length >= 5){
         if(isAscending(candleClickOrder)){
-            setTimeout(()=>{alert("game won");},500);
+            setTimeout(()=>{
+                $("#box_task5").css('visibility', 'hidden');
+                $("#box_task5").css('display', 'none');
+            },500);
+            setTimeout(()=>{
+                puzzleStage++;
+                routePuzzle(puzzleStage);
+            },3000);
         } else {
             // if player gets candle order wrong
             candleClickOrder = [];
             setTimeout(()=>{
                 $('.candle').each(function(i, obj) {
-                    setTimeout(()=>{$(this).addClass('vis');},i*500);
+                    setTimeout(()=>{
+                        
+                        $(this).addClass('vis');
+                        var audio = new Audio('assets/lighter.wav');
+                        audio.volume = Math.random()/3+0.4;
+                        audio.mozPreservesPitch = false;
+                        audio.playbackRate = Math.random()/3+0.8;
+                        audio.play();
+                    
+                    },i*500);
                 });
             },500);
         }
@@ -417,9 +458,90 @@ function activateCandle(n) {
 
 }
 
+// end screen
 
+function SelectText(element) {
+    var doc = document;
+    if (doc.body.createTextRange) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
 
+function endScreen() {
+    $("#box_cls").css('visibility', 'hidden');
+    $("#box_cls").css('display', 'flex');
+    setTimeout(()=>{
+        $("#box_cls").css('visibility', 'visible');
+        $("#congrats").addClass('vis');
+        $("#cls_para").addClass('vis');
+        $("#cls_det").addClass('vis');
+        $("#cls_input").addClass('vis');
+        $("#btn_cls").addClass('vis');
+    },500);
 
+}
+
+function copyClipboard() {
+
+    // making the screenshot
+    const canvas = document.getElementById("ss_canvas");
+    const ctx = canvas.getContext("2d");
+    let funnel = new FontFace("funnel", "url(assets/Funnel.ttf)");
+
+    funnel.load().then(function(font){
+        
+        document.fonts.add(font);
+        
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#000";
+        ctx.fillRect(0, 0, x*3, y*3);
+
+        ctx.fillStyle = "#F4442E";
+        ctx.fillRect(x-320, y+10, 640, 100);
+        ctx.font = "50px funnel";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = "#000";
+        ctx.fillText(`${$("#cls_input").val()}`,x,y+60);
+
+        ctx.font = "90px funnel";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = "#F4442E";
+        ctx.fillText("I won!",x,y-130);
+
+        ctx.font = "40px funnel";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = "#F4442E";
+        ctx.fillText("... and my handle is:",x,y-50);
+
+        ctx.font = "30px funnel";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = "#F4442E";
+        ctx.fillText("Send to @PaulThomasGames on Discord",x,y+180);
+
+        canvas.toBlob(function(blob) { 
+            const item = new ClipboardItem({ "image/png": blob });
+            navigator.clipboard.write([item]); 
+        });
+    
+        $("#btn_cls").html("COPIED!");
+    });
+}
 
 ////////////////////////////////////////////////////////
 
