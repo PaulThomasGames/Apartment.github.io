@@ -188,7 +188,7 @@ function routePuzzle(puzzleStage) {
 
     if(puzzleStage >= 2){
         var audio = new Audio('assets/next.wav');
-        audio.volume = 0.15;
+        audio.volume = 0.24;
         audio.mozPreservesPitch = false;
         audio.playbackRate = 0.7;
         audio.play();
@@ -394,7 +394,7 @@ function candlePuzzle() {
             setTimeout(()=>{
                 $(this).addClass('vis');
                 var audio = new Audio('assets/lighter.wav');
-                audio.volume = Math.random()/3+0.4;
+                audio.volume = Math.random()/4+0.4;
                 audio.mozPreservesPitch = false;
                 audio.playbackRate = Math.random()/3+0.8;
                 audio.play();
@@ -421,7 +421,7 @@ function activateCandle(n) {
     $(`#can${n}`).removeClass('vis');
     
     var audio = new Audio('assets/candle.wav');
-    audio.volume = Math.random()/3+0.5;
+    audio.volume = Math.random()/4+0.3;
     audio.mozPreservesPitch = false;
     audio.playbackRate = Math.random()/2+0.7;
     audio.play();
@@ -445,7 +445,7 @@ function activateCandle(n) {
                         
                         $(this).addClass('vis');
                         var audio = new Audio('assets/lighter.wav');
-                        audio.volume = Math.random()/3+0.4;
+                        audio.volume = Math.random()/4+0.4;
                         audio.mozPreservesPitch = false;
                         audio.playbackRate = Math.random()/3+0.8;
                         audio.play();
