@@ -188,7 +188,7 @@ function routePuzzle(puzzleStage) {
 
     if(puzzleStage >= 2){
         var audio = new Audio('assets/next.wav');
-        audio.volume = 0.05;
+        audio.volume = 0.15;
         audio.mozPreservesPitch = false;
         audio.playbackRate = 0.7;
         audio.play();
